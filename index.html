@@ -169,15 +169,38 @@
         }
 
         /* ===== CARD 1 - Cover ===== */
-        .card-1 .gift-icon {
-            font-size: 80px;
-            margin-bottom: 30px;
-            animation: bounce 2s ease-in-out infinite;
+        .card-1 .family-photo {
+            margin-bottom: 25px;
+            animation: photoReveal 1s ease-out;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .card-1 .family-photo img {
+            width: 280px;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 5px solid white;
+            box-shadow: 
+                0 10px 40px rgba(233, 30, 99, 0.25),
+                0 0 0 3px rgba(233, 30, 99, 0.2);
+            animation: photoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes photoReveal {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.5) rotate(-10deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotate(0deg); 
+            }
+        }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
         }
 
         .card-1 .cover-title {
@@ -681,7 +704,7 @@
                 padding: 40px 30px;
             }
 
-            .card-1 .gift-icon { font-size: 60px; }
+            .card-1 .family-photo img { width: 220px; max-height: 160px; }
             .card-1 .cover-title { font-size: 32px; }
             .card-1 .cover-subtitle { font-size: 14px; }
 
@@ -734,15 +757,15 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-ocean">
 
     <!-- Theme Switcher -->
     <div class="theme-switcher">
-        <button class="theme-btn pink active" onclick="setTheme('pink')" title="Pembe">🌸</button>
+        <button class="theme-btn pink" onclick="setTheme('pink')" title="Pembe">🌸</button>
         <button class="theme-btn warm" onclick="setTheme('warm')" title="Sıcak">🌅</button>
         <button class="theme-btn purple" onclick="setTheme('purple')" title="Mor">💜</button>
         <button class="theme-btn nature" onclick="setTheme('nature')" title="Doğal">🌿</button>
-        <button class="theme-btn ocean" onclick="setTheme('ocean')" title="Okyanus">🩵</button>
+        <button class="theme-btn ocean active" onclick="setTheme('ocean')" title="Okyanus">🩵</button>
     </div>
 
     <!-- Background flowers -->
@@ -780,7 +803,9 @@
                     <span class="sparkle" style="bottom: 20%; right: 20%; animation-delay: 1.5s;">💫</span>
                 </div>
 
-                <div class="gift-icon">🎁</div>
+                <div class="family-photo">
+                    <img src="FamilyPicture.jpeg" alt="Aile Fotoğrafı">
+                </div>
                 <div class="cover-title">Sana Özel Bir Sürpriz!</div>
                 <div class="cover-subtitle">💕 Açmak için devam et 💕</div>
             </div>
@@ -805,15 +830,15 @@
                 </div>
 
                 <div class="message">
-                    <p>Sevgili Anneciğim,</p>
+                    <p>Sevgili Anneciğimiz,</p>
                     <p>
-                        Sen hayatımdaki <span class="highlight">en değerli varlıksın</span>. 
-                        Zor anlarımda yanımda olan, beni dinleyen, 
+                        Sen hayatımızdaki <span class="highlight">en değerli varlıksın</span>. 
+                        Zor anlarımızda yanımızda olan, bizi dinleyen, 
                         sakinleştiren ve koşulsuz seven en özel insansın.
                     </p>
                     <p>
                         Senin sıcaklığın, şefkatin ve güler yüzün 
-                        benim için <span class="highlight">dünyanın en büyük hediyesi</span>.
+                        bizim için <span class="highlight">dünyanın en büyük hediyesi</span>.
                     </p>
                 </div>
             </div>
@@ -832,10 +857,10 @@
                 </div>
 
                 <div class="final-message">
-                    Seni Çok Ama<br>Çok Seviyorum!
+                    Seni Çok Ama<br>Çok Seviyoruz!
                 </div>
 
-                <div class="signature">— Senin Canın 💝</div>
+                <div class="signature">— Seni Seven Çocukların ve Torunun 💝</div>
 
                 <div class="wish">
                     🌟 Sağlık, mutluluk ve huzur dolu<br>
@@ -1163,9 +1188,9 @@
             floatingHearts.appendChild(heart);
         }
 
-        // Confetti
+        // Confetti (ocean theme colors by default)
         const confettiContainer = document.getElementById('confetti');
-        const confettiColors = ['#e91e63', '#9c27b0', '#673ab7', '#ff4081', '#ffeb3b', '#4caf50'];
+        const confettiColors = ['#06b6d4', '#38bdf8', '#7dd3fc', '#f472b6', '#f9a8d4', '#a5f3fc'];
         
         for (let i = 0; i < 40; i++) {
             const confetti = document.createElement('div');
